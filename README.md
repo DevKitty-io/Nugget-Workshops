@@ -6,5 +6,7 @@ This workshop covers how hackers use USB as an attack vector, and walks beginner
 `Beginner` `Intermediate`
 
 ## 💾 Intro to Data Exfiltration
-This workshop gives a basic introduction to data exfiltration techniques including remote, local, and side channel attacks.  We use the Nugget to try out data exfiltration to a remote C2 server, run attacks over WiFi, and also explore local stagers / exfiltration with the USB Nugget's built-in flash storage!
+This workshop gives a basic introduction to data exfiltration techniques including remote, local, and side channel attacks.  We use the Nugget to try out data exfiltration to a remote C2 server, run attacks over WiFi, and also explore local stagers / exfiltration with the USB Nugget's built-in flash storage!   
 `Intermediate`
+## 🎃 Halloween Hacking
+Soldering, coding, WiFi hacking, and more! This workshop is a "sample platter" that gives a brief introduction to WiFi hacking & programming.  We use CircuitPython to practice reconnaissance by creating a WiFi-reactive Halloween light strip that alerts you if your home network is under attack! 
