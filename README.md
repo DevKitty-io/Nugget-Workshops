@@ -14,5 +14,7 @@ Soldering, coding, WiFi hacking, and more! This workshop is a "sample platter" t
 `Beginner` `Intermediate`
 
 ## ⚙️ USB Nugget Quickstart
-Conference-style workshops that give a quickstart introduction to the USB Nugget as an HID / keystroke injection attack tool, and also walk beginners through assembling their own PCB's!
-`Beginner`
+Conference-style workshops that give a quickstart introduction to the USB Nugget as an HID / keystroke injection attack tool, and also walk beginners through assembling their own PCB's!  
+`Beginner` 
+- [Nov 06 2022] [Alex Lynd @ Hackaday Supercon](https://hackaday.com/2022/10/25/2022-hackaday-supercon-joe-kingpin-grand-keynote-and-workshops-galore/)  
+
