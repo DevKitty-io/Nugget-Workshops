@@ -15,6 +15,8 @@ import displayio
 import adafruit_framebuf
 import adafruit_displayio_sh1106
 
+from adafruit_led_animation.color import *
+
 displayio.release_displays()
 
 
@@ -198,10 +200,10 @@ def get_packet():
 def DeauthCheck(newPacket):    
     if subt_names[fd["subt"]] == "Deauthentication":
         NugEyes("/faces/spooky-nugg-inv.bmp")
-        SetAll([159, 43, 104])
+        SetAll(RED)
     else:
         NugEyes("/faces/jack-o-nugg-left-inv.bmp")
-        SetAll([255,127,0])
+        SetAll(TEAL)
 
 print("-"*49)
 print("Starting Monitor...")
