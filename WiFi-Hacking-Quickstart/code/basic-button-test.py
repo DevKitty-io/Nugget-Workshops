@@ -13,7 +13,7 @@ import adafruit_framebuf
 import adafruit_displayio_sh1106
 
 ## Screen setup and function to change image on the screen
-faceImage = "faces/derpcat.bmp"
+faceImage = "faces/spooky-nugg-inv.bmp"
 displayio.release_displays()
 WIDTH = 130 # Change these to the right size for your display!
 HEIGHT = 64
@@ -82,16 +82,16 @@ while True:
             if not cur_state:
                 print(LabelList[i], "is pressed")
                 if LabelList[i] == 'up':
-                    faceImage = "faces/goofnug.bmp"
+                    faceImage = "faces/spooky-nugg-inv.bmp"
                     SetColor([255,0,0])
                 elif LabelList[i] == 'down':
-                    faceImage = "faces/boocat.bmp"
+                    faceImage = "faces/spooky-nugg-inv.bmp"
                     SetColor([0,255,0])
                 elif LabelList[i] == 'right':
-                    faceImage = "faces/derpcat.bmp"
+                    faceImage = "faces/jack-o-nugg-right-inv.bmp"
                     SetColor([0,0, 255])
                 else:
-                    faceImage = "faces/uwu.bmp"
+                    faceImage = "faces/jack-o-nugg-left-inv.bmp"
                     SetColor([247,158,240])
                 NugFace(faceImage)
         StateList[i] = cur_state
