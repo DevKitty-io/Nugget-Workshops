@@ -49,10 +49,10 @@ def DeauthCheck(newPacket):
         NugEyes("/faces/spooky-nugg-inv.bmp")
         response = requests.get(canary_url)
         print(response.status_code)
-        SetAll([159, 43, 104])
+        SetAll(RED)
     else:
         NugEyes("/faces/jack-o-nugg-left-inv.bmp")
-        SetAll([255,127,0])
+        SetAll(GREEN)
 
 PARSE_HEADER = True
 PARSE_BODY = True  # if True, PARSE_HEADER must be True
