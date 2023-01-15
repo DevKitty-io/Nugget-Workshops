@@ -1,6 +1,6 @@
-import gc
-import time
-import board
+import gc, time, board, neopixel
+from board import SCL, SDA
+
 import digitalio
 import supervisor
 import random
@@ -9,8 +9,7 @@ import espidf
 import ipaddress
 import socketpool
 import ssl
-import neopixel
-from board import SCL, SDA
+
 import busio
 import displayio
 import adafruit_framebuf
@@ -18,17 +17,22 @@ import adafruit_displayio_sh1106
 
 displayio.release_displays()
 
-WIDTH = 130 # Change these to the right size for your display!
-HEIGHT = 64
-BORDER = 1
 
-i2c = busio.I2C(SCL, SDA) # Create the I2C interface.
+# Initialize the Screen! #
+# ----------------------------------------#
+
+WIDTH = 130
+HEIGHT = 64
+i2c = busio.I2C(SCL, SDA) 
 display_bus = displayio.I2CDisplay(i2c, device_address=0x3c)
 display = adafruit_displayio_sh1106.SH1106(display_bus, width=WIDTH, height=HEIGHT) # Create the SH1106 OLED class.
 
-pixel_pin = board.IO12    # Specify the pin that the neopixel is connected to (GPIO 12)
-num_pixels = 1  # Set number of neopixels
-pixel = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.6)   # Create neopixel and set brightness to 30%
+# Initialize NeoPixels! #
+# ----------------------------------------#
+
+pixel_pin = board.IO12
+num_pixels = 1  
+pixel = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.6)
 
 def SetAll(color):   # Define function with one input (color we want to set)
     for i in range(0, num_pixels):   # Addressing all 11 neopixels in a loop
@@ -41,13 +45,12 @@ def NugEyes(IMAGE):
     group.append(tile_grid) # Add the TileGrid to the Group
     display.show(group) # Add the Group to the Display
 
-def DeauthCheck(newPacket):    
-    if subt_names[fd["subt"]] == "Deauthentication":
-        NugEyes("/faces/spooky-nugg-inv.bmp")
-        SetAll([159, 43, 104])
-    else:
-        NugEyes("/faces/jack-o-nugg-left-inv.bmp")
-        SetAll([255,127,0])
+# Initialize the Screen! #
+# ----------------------------------------#
+
+        
+# Some Wi-Fi functions #
+# ----------------------------------------#
 
 PARSE_HEADER = True
 PARSE_BODY = True  # if True, PARSE_HEADER must be True
@@ -161,6 +164,9 @@ def parse_body(fd, buf):
         pos = ie_end
     fd["ies"] = ies
     return fd
+    
+# Parse & print packet! #
+# ----------------------------------------#
 
 def get_packet():
     fd = {}
@@ -178,18 +184,38 @@ def get_packet():
             fd = parse_body(fd, received[wifi.Packet.RAW])
         print("CH:{} RSSI:{} TYPE:{} SRC:{} DST:{}".format(fd["ch"],fd["rssi"],fd["subtname"],fd["a2"],fd["a1"]))
     return fd
+    
+    
+    
+    
+    
+    
+    
+# Program Logic Starts Here! #
+# ----------------------------------------#
+
+# function to control Deauth Detection
+def DeauthCheck(newPacket):    
+    if subt_names[fd["subt"]] == "Deauthentication":
+        NugEyes("/faces/spooky-nugg-inv.bmp")
+        SetAll([159, 43, 104])
+    else:
+        NugEyes("/faces/jack-o-nugg-left-inv.bmp")
+        SetAll([255,127,0])
 
 print("-"*49)
 print("Starting Monitor...")
 monitor = wifi.Monitor()
 print("-"*49)
 
+# infinite packet monitor
 while True:
     try:
-        monitor.channel = random.randrange(1, 12)
+        monitor.channel = random.randrange(1, 12) # ghetto channel hopping
         fd = get_packet()
         if len(fd) > 2:
             if PARSE_HEADER:
-                DeauthCheck(subt_names[fd["subt"]])
+                DeauthCheck(subt_names[fd["subt"]]) # check packet subtype for deauthentication
+                
     except RuntimeError as e:
         print("RuntimeError", e)
