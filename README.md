@@ -23,4 +23,4 @@ This workshop gives a basic introduction to data exfiltration techniques includi
 Conference-style workshops that give a quickstart introduction to the USB Nugget as an HID / keystroke injection attack tool, and also walk beginners through assembling their own PCB's!  
 `Beginner` 
 - [Nov 06 2022] [Alex Lynd @ Hackaday Supercon](https://hackaday.com/2022/10/25/2022-hackaday-supercon-joe-kingpin-grand-keynote-and-workshops-galore/)  
-
+- [Mar 19 2023] [Alex Lynd & Angelina TsuBoi @ Crash Space](https://github.com/HakCat-Tech/Nugget-Workshops/blob/main/USB-Nugget-Quickstart/Soldering-%26-USB-Attack-Workshop-(03-19-23-Crash-Space)%20.pdf)
